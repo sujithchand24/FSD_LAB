@@ -1,0 +1,35 @@
+<h2>Contact Form</h2>
+
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+
+  <label>Name:</label><br>
+  <input type="text" formControlName="name">
+  <small style="color: red" *ngIf="contactForm.get('name')?.invalid &&
+  contactForm.get('name')?.touched">
+    Name is required
+  </small>
+  <br><br>
+
+  <label>Email:</label><br>
+  <input type="email" formControlName="email">
+  <small style="color: red" *ngIf="contactForm.get('email')?.errors?.['required'] &&
+  contactForm.get('email')?.touched">
+    Email is required
+  </small>
+  <small style="color: red" *ngIf="contactForm.get('email')?.errors?.['email'] &&
+  contactForm.get('email')?.touched">
+    Enter a valid email
+  </small>
+  <br><br>
+
+  <label>Message:</label><br>
+  <textarea formControlName="message"></textarea>
+  <small style="color: red" *ngIf="contactForm.get('message')?.invalid &&
+  contactForm.get('message')?.touched">
+    Message is required
+  </small>
+  <br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
